@@ -25,3 +25,4 @@ yarn-error.log*
 debug.log
 ui-debug.log
 .eslintcache
+.vscode
