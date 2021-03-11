@@ -1,0 +1,96 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import CurrencyFormat from "react-currency-format";
+import moment from "moment";
+import CartProduct from "../cart/CartProduct";
+import Ads from "../common/Ads";
+import { auth, db } from "../../firebase";
+import "../../styles/orders/orders.css";
+
+const Orders = () => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    let isSubscribed = true;
+
+    const getOrders = async () => {
+      const querySnapshot = await db
+        .collection("users")
+        .doc(auth.currentUser?.uid)
+        .collection("orders")
+        .orderBy("created", "desc")
+        .get();
+
+      const docs = querySnapshot.docs.map((doc) => doc.data());
+
+      setOrders(docs);
+    };
+
+    if (isSubscribed) getOrders();
+
+    return () => (isSubscribed = false);
+  }, []);
+
+  return (
+    <main className="orders">
+      <div className="content-wrap">
+        <div className="orders-products">
+          {orders.length === 0 ? (
+            <div className="orders-header">
+              <h2>Your Amazon Orders is empty.</h2>
+              <p>
+                Your Shopping Orders lives to serve. Give it purpose — fill it
+                with groceries, clothing, household supplies, electronics, and
+                more.
+                <br />
+                Shopping on the <Link to="/">Amazon.com homepage</Link>, learn
+                about <Link to="/todays-deals">today's deals</Link>, or visit
+                your <Link to="/wish-list">Wish List</Link>.
+              </p>
+            </div>
+          ) : (
+            orders.map((order) => (
+              <div className="order" key={order.orderId}>
+                <p>
+                  {moment.unix(order.created).format("MMMM Do YYYY, h:mma")}
+                </p>
+
+                <div>
+                  {order.cart.map((item) => (
+                    <CartProduct
+                      key={order.orderId + item.id}
+                      id={item.id}
+                      image={item.image}
+                      title={item.title}
+                      price={item.price}
+                      displayButtons={false}
+                    />
+                  ))}
+                </div>
+                <div className="cart-subtotal">
+                  <CurrencyFormat
+                    renderText={(value) => (
+                      <p>
+                        Subtotal ({order.cart.length}{" "}
+                        {order.cart.length >= 2 ? "items" : "item"}
+                        ): <strong>{value}</strong>
+                      </p>
+                    )}
+                    decimalScale={2}
+                    value={order.amount}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$"}
+                  />
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+        <Ads />
+      </div>
+    </main>
+  );
+};
+
+export default Orders;

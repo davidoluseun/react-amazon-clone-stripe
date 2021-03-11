@@ -1,0 +1,19 @@
+/* Cart Component
+--------------------------- */
+
+.cart {
+  padding: 20px;
+  background: #eaeded;
+}
+
+/* Media Queries
+-------------------------------------- */
+
+@media (min-width: 1200px) {
+  .cart .content-wrap {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: start;
+    column-gap: 20px;
+  }
+}
