@@ -25,6 +25,10 @@
   content: url("../../images/arrow-next.png");
 }
 
+.hero-slider img {
+  width: 100%;
+}
+
 /* Media Queries
 ------------------------------------ */
 

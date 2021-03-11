@@ -37,9 +37,7 @@ const Home = () => {
 
   return (
     <main className="home">
-      <div className="content-wrap">
-        <HeroSlider />
-      </div>
+      <HeroSlider />
       <div className="home-wrap content-wrap">
         <div className="product-category-wrap">
           <ProductCategory
