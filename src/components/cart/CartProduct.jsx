@@ -19,7 +19,9 @@ const CartProduct = ({ id, title, price, image, displayButtons }) => {
         </Link>
         <div className="cart-product-details">
           <div className="title-wrap">
-            <p>{title}</p>
+            <p>
+              <Link to="/">{title}</Link>
+            </p>
             <CurrencyFormat
               renderText={(value) => (
                 <strong className="cart-product-price">{value}</strong>

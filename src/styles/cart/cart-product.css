@@ -20,6 +20,10 @@
   margin: 16px 0;
 }
 
+.title-wrap a {
+  color: #111;
+}
+
 .stock-status,
 .cart-product-btn-wrap {
   padding-top: 20px;
