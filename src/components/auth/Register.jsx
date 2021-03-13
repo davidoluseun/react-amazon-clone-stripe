@@ -37,8 +37,12 @@ class Register extends Form {
 
       history.push("/");
     } catch (e) {
-      console.log("Creating account failed");
-      console.log(e.message);
+      const errors = { ...this.state.errors };
+
+      if (e.code === "auth/email-already-in-use")
+        errors.email = "Email already registered.";
+
+      this.setState({ errors });
     }
   };
 
