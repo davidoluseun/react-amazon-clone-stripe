@@ -22,16 +22,10 @@ class SignIn extends Form {
       history.push(state ? state.from.pathname : "/");
     } catch (e) {
       const errors = { ...this.state.errors };
-      if (
-        e.message ===
-        "There is no user record corresponding to this identifier. The user may have been deleted."
-      )
-        errors.email = "Invalid email";
 
-      if (
-        e.message ===
-        "The password is invalid or the user does not have a password."
-      )
+      if (e.code === "auth/user-not-found") errors.email = "Invalid email";
+
+      if (e.code === "auth/wrong-password")
         errors.password = "Invalid password";
 
       this.setState({ errors });
