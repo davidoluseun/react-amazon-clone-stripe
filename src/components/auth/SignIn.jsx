@@ -21,8 +21,20 @@ class SignIn extends Form {
 
       history.push(state ? state.from.pathname : "/");
     } catch (e) {
-      console.log("Sign in failed");
-      console.log(e.message);
+      const errors = { ...this.state.errors };
+      if (
+        e.message ===
+        "There is no user record corresponding to this identifier. The user may have been deleted."
+      )
+        errors.email = "Invalid email";
+
+      if (
+        e.message ===
+        "The password is invalid or the user does not have a password."
+      )
+        errors.password = "Invalid password";
+
+      this.setState({ errors });
     }
   };
 
