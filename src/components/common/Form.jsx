@@ -16,11 +16,11 @@ class Form extends Component {
 
     const { data } = this.state;
 
-    if (data.name?.trim() === "") errors.name = "Name is required";
+    if (data.name?.trim() === "") errors.name = "Name is required.";
 
     if (data.email?.trim() === "") errors.email = "Email is required.";
     else if (!data.email.trim().match(emailRegex))
-      errors.email = "Please provide a valid email address";
+      errors.email = "Please provide a valid email address.";
 
     if (data.password?.trim() === "") errors.password = "Password is required.";
     else if (data.password?.trim().length <= 5)
@@ -53,7 +53,7 @@ class Form extends Component {
       if (value.trim() === "") return "Email is required.";
 
       if (!value.trim().match(emailRegex))
-        return "Please provide a valid email address";
+        return "Please provide a valid email address.";
     }
 
     if (name === "password") {

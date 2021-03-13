@@ -26,7 +26,7 @@ class SignIn extends Form {
       if (e.code === "auth/user-not-found") errors.email = "Invalid email";
 
       if (e.code === "auth/wrong-password")
-        errors.password = "Invalid password";
+        errors.password = "Invalid password.";
 
       this.setState({ errors });
     }
