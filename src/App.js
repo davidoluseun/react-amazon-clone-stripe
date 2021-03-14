@@ -22,7 +22,7 @@ import "./App.css";
 
 toast.configure();
 
-const promise = loadStripe(
+const stripePromise = loadStripe(
   "pk_test_51IC0gNIKvq1Ezq0qLvdF8cuSE1r9FEpyfdqLDfXHEsrc0hAbjzplAxxOvDnj9sYWuyRcXyEW1oXZYQo8FLxLu80400KnIAAvY5"
 );
 
@@ -56,7 +56,7 @@ function App() {
 
         <Route path="/checkout">
           <Header />
-          <Elements stripe={promise}>
+          <Elements stripe={stripePromise}>
             <Checkout />
           </Elements>
           <ToTop />
