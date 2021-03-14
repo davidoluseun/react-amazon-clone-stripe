@@ -8,6 +8,7 @@ class SignIn extends Form {
   state = {
     data: { email: "", password: "" },
     errors: {},
+    isLoading: false,
   };
 
   doSubmit = async () => {
@@ -16,11 +17,13 @@ class SignIn extends Form {
       const { email, password } = data;
       const { history } = this.props;
       const { state } = this.props.location;
+      this.setState({ isLoading: true });
 
       await auth.signInWithEmailAndPassword(email, password);
 
       history.push(state ? state.from.pathname : "/");
     } catch (e) {
+      this.setState({ isLoading: false });
       const errors = { ...this.state.errors };
 
       if (e.code === "auth/user-not-found") errors.email = "Invalid email";
@@ -34,8 +37,11 @@ class SignIn extends Form {
 
   render() {
     const { history } = this.props;
+    const { isLoading } = this.state;
 
     if (auth.currentUser) return <Redirect to="/" />;
+
+    const signInBtnText = !isLoading ? "Continue" : "Loading...";
 
     return (
       <>
@@ -54,7 +60,7 @@ class SignIn extends Form {
 
                 {this.renderInput("password", "Password", "password")}
 
-                {this.renderSubmitBotton("Continue")}
+                {this.renderSubmitBotton(signInBtnText)}
               </fieldset>
 
               {this.renderRecoveryLink("Forgot your password?")}
