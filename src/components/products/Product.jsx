@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import useStateValue from "../../hooks/useStateValue";
 import "../../styles/products/product.css";
 import StarImage from "../../images/star.png";
@@ -20,6 +21,7 @@ const Product = ({
       type: "ADD_TO_CART",
       item: { id, title, rating, price, image },
     });
+    toast.success("One item added to your cart");
   };
 
   return (
