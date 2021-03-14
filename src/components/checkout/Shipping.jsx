@@ -1,9 +1,10 @@
 import React from "react";
-import Form from "../common/Form";
 import { toast } from "react-toastify";
+import Form from "../common/Form";
 import ShippingDetail from "./ShippingDetail";
 import ShippingForm from "./ShippingForm";
 import Payment from "./Payment";
+import PreloaderWrap from "./PreloaderWrap";
 import { auth, db } from "../../firebase";
 
 export class Shipping extends Form {
@@ -19,6 +20,7 @@ export class Shipping extends Form {
       phonenumber: "",
     },
     errors: {},
+    shippingStatusIsLoading: true,
     isSubmitted: false,
     isSubscribed: true,
     isLoading: false,
@@ -40,7 +42,11 @@ export class Shipping extends Form {
           const doc = await docRef.get();
           const data = doc.data();
 
-          this.setState({ data, isSubmitted: true });
+          this.setState({
+            data,
+            isSubmitted: true,
+            shippingStatusIsLoading: false,
+          });
         } else {
           const data = { ...this.state.data };
 
@@ -50,7 +56,10 @@ export class Shipping extends Form {
           data.name = doc.data().name;
           data.email = doc.data().email;
 
-          this.setState({ data });
+          this.setState({
+            data,
+            shippingStatusIsLoading: false,
+          });
         }
       } catch (e) {
         toast.error("An unexpected error occurred.");
@@ -84,21 +93,32 @@ export class Shipping extends Form {
   };
 
   render() {
-    const { isSubmitted, data, isLoading } = this.state;
+    const {
+      isSubmitted,
+      data,
+      isLoading,
+      shippingStatusIsLoading,
+    } = this.state;
 
     return (
       <section className="shipping">
-        {isSubmitted ? (
-          <ShippingDetail data={data} handleClick={this.handleClick} />
+        {shippingStatusIsLoading ? (
+          <PreloaderWrap />
         ) : (
-          <ShippingForm
-            renderFormTitle={this.renderFormTitle}
-            renderInput={this.renderInput}
-            renderCountrySelect={this.renderCountrySelect}
-            renderSubmitBotton={this.renderSubmitBotton}
-            handleSubmit={this.handleSubmit}
-            isLoading={isLoading}
-          />
+          <>
+            {isSubmitted ? (
+              <ShippingDetail data={data} handleClick={this.handleClick} />
+            ) : (
+              <ShippingForm
+                renderFormTitle={this.renderFormTitle}
+                renderInput={this.renderInput}
+                renderCountrySelect={this.renderCountrySelect}
+                renderSubmitBotton={this.renderSubmitBotton}
+                handleSubmit={this.handleSubmit}
+                isLoading={isLoading}
+              />
+            )}
+          </>
         )}
 
         {isSubmitted && <Payment />}
