@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import CurrencyFormat from "react-currency-format";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { toast } from "react-toastify";
-import axios from "axios";
 import useStateValue from "../../hooks/useStateValue";
 import getCartTotal from "../../utils/getCartTotal";
 import { db } from "../../firebase";
@@ -25,7 +24,7 @@ const Payment = () => {
     let isSubscribed = true;
 
     const getClientSecret = async () => {
-      
+
       const response = await http.post(
         `/payments/create?total=${Math.round(getCartTotal(cart) * 100)}`
       );
