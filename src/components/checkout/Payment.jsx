@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import CurrencyFormat from "react-currency-format";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { toast } from "react-toastify";
 import axios from "axios";
 import useStateValue from "../../hooks/useStateValue";
 import getCartTotal from "../../utils/getCartTotal";
@@ -66,7 +67,7 @@ const Payment = () => {
       dispatch({ type: "EMPTY_CART" });
       history.replace("/orders");
     } catch (e) {
-      console.log(e.message);
+      toast.error("An unexpected error occurred. payment");
     }
   };
 

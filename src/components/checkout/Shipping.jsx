@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "../common/Form";
+import { toast } from "react-toastify";
 import ShippingDetail from "./ShippingDetail";
 import ShippingForm from "./ShippingForm";
 import Payment from "./Payment";
@@ -51,7 +52,7 @@ export class Shipping extends Form {
           this.setState({ data });
         }
       } catch (e) {
-        console.log(e.message);
+        toast.error("An unexpected error occurred.");
       }
     }
   }
@@ -71,7 +72,7 @@ export class Shipping extends Form {
 
       this.setState({ isSubmitted: true });
     } catch (e) {
-      console.log(e.message);
+      toast.error("An unexpected error occurred.");
     }
   };
 

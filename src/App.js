@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { toast } from "react-toastify";
 import Header from "./components/navbar/Header";
 import Home from "./components/home/Home";
 import Footer from "./components/footer/Footer";
@@ -16,7 +17,10 @@ import NotFound from "./components/common/NotFound";
 import { Provider } from "./contexts/stateContext";
 import { reducer, initialState } from "./utils/reducer";
 import { auth } from "./firebase";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+
+toast.configure();
 
 const promise = loadStripe(
   "pk_test_51IC0gNIKvq1Ezq0qLvdF8cuSE1r9FEpyfdqLDfXHEsrc0hAbjzplAxxOvDnj9sYWuyRcXyEW1oXZYQo8FLxLu80400KnIAAvY5"
