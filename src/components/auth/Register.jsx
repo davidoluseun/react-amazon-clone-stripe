@@ -8,6 +8,7 @@ class Register extends Form {
   state = {
     data: { name: "", email: "", password: "", confirmPassword: "" },
     errors: {},
+    isLoading: false,
   };
 
   doSubmit = async () => {
@@ -15,6 +16,7 @@ class Register extends Form {
       const { data } = this.state;
       const { name, email, password } = data;
       const { history } = this.props;
+      this.setState({ isLoading: true });
 
       let displayName = name;
 
@@ -38,6 +40,7 @@ class Register extends Form {
       history.push("/");
     } catch (e) {
       const errors = { ...this.state.errors };
+      this.setState({ isLoading: false });
 
       if (e.code === "auth/email-already-in-use")
         errors.email = "Email already registered.";
@@ -48,6 +51,11 @@ class Register extends Form {
 
   render() {
     if (auth.currentUser) return <Redirect to="/" />;
+
+    const { isLoading } = this.state;
+    const signUpBtnText = !isLoading
+      ? "Create your Amazon Account"
+      : "Loading...";
 
     return (
       <>
@@ -64,7 +72,7 @@ class Register extends Form {
 
                 {this.renderInput("password", "Password", "password")}
 
-                {this.renderSubmitBotton("Create your Amazon Account")}
+                {this.renderSubmitBotton(signUpBtnText)}
               </fieldset>
 
               {this.renderFormNotice(
