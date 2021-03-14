@@ -40,8 +40,6 @@ function App() {
   return (
     <Provider value={stateWithDispatch}>
       <Switch>
-        {/* <Route to="/" component={(Header, Home, Footer)} /> */}
-
         <Route path="/products">
           <Header />
           <Products />
