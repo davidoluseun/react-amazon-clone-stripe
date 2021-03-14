@@ -24,8 +24,8 @@ class SignIn extends Form {
 
       history.push(state ? state.from.pathname : "/");
     } catch (e) {
-      this.setState({ isLoading: false });
       const errors = { ...this.state.errors };
+      this.setState({ isLoading: false });
 
       if (e.code === "auth/user-not-found") errors.email = "Invalid email";
 
@@ -38,11 +38,10 @@ class SignIn extends Form {
   };
 
   render() {
-    const { history } = this.props;
-    const { isLoading } = this.state;
-
     if (auth.currentUser) return <Redirect to="/" />;
 
+    const { history } = this.props;
+    const { isLoading } = this.state;
     const signInBtnText = !isLoading ? "Continue" : "Loading...";
 
     return (
