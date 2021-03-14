@@ -21,6 +21,7 @@ export class Shipping extends Form {
     errors: {},
     isSubmitted: false,
     isSubscribed: true,
+    isLoading: false,
   };
 
   async componentDidMount() {
@@ -65,14 +66,16 @@ export class Shipping extends Form {
 
   doSubmit = async () => {
     try {
+      this.setState({ isLoading: true });
       await db
         .collection("users")
         .doc(auth.currentUser.uid)
         .update({ ...this.state.data });
 
-      this.setState({ isSubmitted: true });
+      this.setState({ isSubmitted: true, isLoading: false });
     } catch (e) {
       toast.error("An unexpected error occurred.");
+      this.setState({ isLoading: false });
     }
   };
 
@@ -81,7 +84,7 @@ export class Shipping extends Form {
   };
 
   render() {
-    const { isSubmitted, data } = this.state;
+    const { isSubmitted, data, isLoading } = this.state;
 
     return (
       <section className="shipping">
@@ -94,6 +97,7 @@ export class Shipping extends Form {
             renderCountrySelect={this.renderCountrySelect}
             renderSubmitBotton={this.renderSubmitBotton}
             handleSubmit={this.handleSubmit}
+            isLoading={isLoading}
           />
         )}
 

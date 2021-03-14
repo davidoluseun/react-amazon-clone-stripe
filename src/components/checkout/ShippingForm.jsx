@@ -7,7 +7,10 @@ const ShippingForm = ({
   renderCountrySelect,
   renderSubmitBotton,
   handleSubmit,
+  isLoading,
 }) => {
+  const submitBtnText = !isLoading ? "Continue" : "Loading...";
+
   return (
     <form className="shipping-form" onSubmit={handleSubmit} noValidate>
       <fieldset>
@@ -29,7 +32,7 @@ const ShippingForm = ({
         {renderInput("phonenumber", "Phone Number")}
         {renderInput("email", "Email", "email")}
 
-        {renderSubmitBotton("Continue")}
+        {renderSubmitBotton(submitBtnText)}
       </fieldset>
     </form>
   );
