@@ -4,8 +4,6 @@
 .belt-nav {
   background: #131921;
   font-size: 12px;
-
-  padding: 0 20px;
 }
 
 .belt-nav .content-wrap {
@@ -193,9 +191,6 @@
 }
 
 @media (min-width: 992px) {
-  .belt-nav {
-    padding: 0 20px;
-  }
 
   .belt-nav .content-wrap {
     flex-wrap: nowrap;

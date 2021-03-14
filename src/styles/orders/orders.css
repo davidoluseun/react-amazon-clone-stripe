@@ -4,6 +4,9 @@
 .orders {
   background: #eaeded;
   display: grid;
+}
+
+.orders .content-wrap {
   padding: 20px;
 }
 

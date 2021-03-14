@@ -3,6 +3,9 @@
 
 .checkout {
   background: #eaeded;
+}
+
+.checkout .content-wrap {
   padding: 20px;
 }
 

@@ -2,8 +2,11 @@
 --------------------------- */
 
 .cart {
-  padding: 20px;
   background: #eaeded;
+}
+
+.cart .content-wrap {
+  padding: 20px;
 }
 
 /* Media Queries
