@@ -21,7 +21,9 @@ const Product = ({
       type: "ADD_TO_CART",
       item: { id, title, rating, price, image },
     });
-    toast.success("One item added to your cart");
+    toast.success("One item added to your cart", {
+      autoClose: 2000,
+    });
   };
 
   return (
