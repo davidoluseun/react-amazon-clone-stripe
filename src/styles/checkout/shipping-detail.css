@@ -9,6 +9,11 @@
   border: 1px #d5d9d9 solid;
 }
 
+.shipping-detail h2 {
+  margin: 0 0 12px;
+  font-size: 21px;
+}
+
 .edit-btn {
   width: 30px;
   height: 30px;
