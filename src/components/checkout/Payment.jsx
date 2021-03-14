@@ -7,6 +7,7 @@ import axios from "axios";
 import useStateValue from "../../hooks/useStateValue";
 import getCartTotal from "../../utils/getCartTotal";
 import { db } from "../../firebase";
+import http from "../../services/httpService";
 import "../../styles/checkout/payment.css";
 
 const Payment = () => {
@@ -24,13 +25,10 @@ const Payment = () => {
     let isSubscribed = true;
 
     const getClientSecret = async () => {
-      const response = await axios({
-        method: "post",
-
-        url: `http://localhost:5001/react--clone-stripe/us-central1/api/payments/create?total=${Math.round(
-          getCartTotal(cart) * 100
-        )}`,
-      });
+      
+      const response = await http.post(
+        `/payments/create?total=${Math.round(getCartTotal(cart) * 100)}`
+      );
 
       setClientSecret(response.data.clientSecret);
     };
@@ -67,7 +65,7 @@ const Payment = () => {
       dispatch({ type: "EMPTY_CART" });
       history.replace("/orders");
     } catch (e) {
-      toast.error("An unexpected error occurred. payment");
+      toast.error("An unexpected error occurred.");
     }
   };
 
