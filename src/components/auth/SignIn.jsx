@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 import Form from "../common/Form";
 import { auth } from "../../firebase";
 import "../../styles/auth/auth.css";
@@ -32,6 +33,7 @@ class SignIn extends Form {
         errors.password = "Invalid password.";
 
       this.setState({ errors });
+      toast.error("An unexpected error occurred.");
     }
   };
 
