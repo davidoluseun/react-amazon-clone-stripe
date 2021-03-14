@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 import Form from "../common/Form";
 import { auth, db } from "../../firebase";
 import "../../styles/auth/auth.css";
@@ -46,6 +47,7 @@ class Register extends Form {
         errors.email = "Email already registered.";
 
       this.setState({ errors });
+      toast.error("An unexpected error occurred.");
     }
   };
 
