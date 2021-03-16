@@ -27,10 +27,8 @@ const Orders = () => {
 
         const docs = querySnapshot.docs.map((doc) => doc.data());
 
-        if (docs.length) {
-          setOrders(docs);
-          setOrdersStatusIsLoading(false);
-        }
+        setOrders(docs);
+        setOrdersStatusIsLoading(false);
       };
 
       if (isSubscribed) getOrders();
