@@ -1,6 +1,7 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
 import CartProduct from "../cart/CartProduct";
+import EmptyCart from "../cart/EmptyCart";
 import useStateValue from "../../hooks/useStateValue";
 import getCartTotal from "../../utils/getCartTotal";
 import "../../styles/checkout/checkout-product.css";
@@ -10,18 +11,23 @@ const CheckoutProduct = () => {
 
   return (
     <section className="checkout-products">
-      <h2>Checkout Products</h2>
-      {cart.map((item) => (
-        <CartProduct
-          key={item.id}
-          id={item.id}
-          image={item.image}
-          title={item.title}
-          price={item.price}
-          displayButtons={false}
-        />
-      ))}
-
+      {cart.length === 0 ? (
+        <EmptyCart />
+      ) : (
+        <>
+          <h2>Checkout Products</h2>
+          {cart.map((item) => (
+            <CartProduct
+              key={item.id}
+              id={item.id}
+              image={item.image}
+              title={item.title}
+              price={item.price}
+              displayButtons={false}
+            />
+          ))}
+        </>
+      )}
       <div className="cart-subtotal">
         <CurrencyFormat
           renderText={(value) => (
