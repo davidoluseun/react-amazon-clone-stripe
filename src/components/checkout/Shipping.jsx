@@ -4,7 +4,7 @@ import Form from "../common/Form";
 import ShippingDetail from "./ShippingDetail";
 import ShippingForm from "./ShippingForm";
 import Payment from "./Payment";
-import PreloaderWrap from "./PreloaderWrap";
+import PreloaderWrap from "../common/PreloaderWrap";
 import { auth, db } from "../../firebase";
 
 export class Shipping extends Form {
