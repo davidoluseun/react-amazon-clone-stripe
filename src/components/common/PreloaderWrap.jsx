@@ -1,6 +1,6 @@
 import React from "react";
 import { Preloader, TailSpin } from "react-preloader-icon";
-import "../../styles/checkout/preloader-wrap.css";
+import "../../styles/common/preloader-wrap.css";
 
 const PreloaderWrap = () => {
   return (
