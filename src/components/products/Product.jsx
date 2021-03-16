@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import useStateValue from "../../hooks/useStateValue";
 import "../../styles/products/product.css";
@@ -15,6 +15,7 @@ const Product = ({
   shippingLocation,
 }) => {
   const [, dispatch] = useStateValue();
+  const history = useHistory();
 
   const handleAddToCart = () => {
     dispatch({
@@ -24,6 +25,15 @@ const Product = ({
     toast.success("One item added to your cart", {
       autoClose: 2000,
     });
+  };
+
+  const handleBuyNow = () => {
+    dispatch({
+      type: "ADD_TO_CART",
+      item: { id, title, rating, price, image },
+    });
+
+    history.push("/checkout");
   };
 
   return (
@@ -55,7 +65,9 @@ const Product = ({
           >
             Add to Cart
           </button>
-          <button className="btn-primary buy-now-btn">Buy Now</button>
+          <button className="btn-primary buy-now-btn" onClick={handleBuyNow}>
+            Buy Now
+          </button>
         </div>
       </div>
     </div>
