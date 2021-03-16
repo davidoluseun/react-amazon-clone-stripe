@@ -90,7 +90,7 @@ const MainNav = () => {
               </div>
             </div>
           </div>
-          <div className={hmOpaqueClasses}></div>
+          <div className={hmOpaqueClasses} onClick={handleInvisible}></div>
         </div>
 
         <div className="nav-fill">
