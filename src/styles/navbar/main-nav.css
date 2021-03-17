@@ -10,10 +10,28 @@
   display: none;
 }
 
-.main-nav a {
+.main-nav a,
+.main-nav .open-btn {
   display: inline-block;
   margin: 4px 0;
   padding: 8px;
+}
+
+.main-nav .open-btn {
+  cursor: pointer;
+  border: 1px solid;
+  background: transparent;
+  border-color: transparent;
+}
+
+.main-nav .open-btn:hover {
+  border-color: #fff;
+}
+
+.main-nav .open-btn:focus {
+  border-color: transparent;
+  outline: 0;
+  box-shadow: 0 0 0 2px #f90, 0 0 0 3px rgb(255 153 0 / 50%);
 }
 
 .hm-label {

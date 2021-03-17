@@ -34,13 +34,25 @@ const MainNav = () => {
     <div className="main-nav">
       <div className="content-wrap">
         <div className="nav-left">
-          <Link to="/" onClick={handleVisible}>
+          <button
+            className="open-btn"
+            onClick={handleVisible}
+            aria-expanded={menuIsVisible}
+            aria-controls="hm-menu"
+            aria-label="Open navigation"
+          >
             <span className="fas fa-bars" aria-hidden="true"></span>
             <span className="hm-label">All</span>
-          </Link>
+          </button>
 
-          <div className={hmClasses}>
-            <button onClick={handleInvisible} className="close-btn">
+          <div className={hmClasses} id="hm-menu">
+            <button
+              onClick={handleInvisible}
+              className="close-btn"
+              aria-expanded={menuIsVisible}
+              aria-controls="hm-menu"
+              aria-label="Close navigation"
+            >
               <span className="fas fa-times" aria-hidden="true"></span>
             </button>
 
