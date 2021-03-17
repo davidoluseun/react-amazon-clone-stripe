@@ -5,7 +5,11 @@ const ShippingDetail = ({ data, handleClick }) => {
   return (
     <div className="shipping-detail">
       <h2>Shipping Address</h2>
-      <button className="edit-btn" onClick={handleClick}>
+      <button
+        className="edit-btn"
+        onClick={handleClick}
+        aria-label="Update Shipping Address"
+      >
         <span className="fas fa-pen" aria-hidden="true"></span>
       </button>
       <div className="detail-group">
