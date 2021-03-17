@@ -5,7 +5,11 @@ const Input = ({ name, label, error, ...rest }) => {
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <input name={name} id={name} {...rest} />
-      {error && <div className="invalid-feedback">{error}</div>}
+      {error && (
+        <div className="invalid-feedback" role="alert">
+          {error}
+        </div>
+      )}
     </div>
   );
 };

@@ -265,7 +265,11 @@ const CountrySelect = ({ name, label, error, ...rest }) => {
         <option value="Zambia">Zambia</option>
         <option value="Zimbabwe">Zimbabwe</option>
       </select>
-      {error && <div className="invalid-feedback">{error}</div>}
+      {error && (
+        <div className="invalid-feedback" role="alert">
+          {error}
+        </div>
+      )}
     </div>
   );
 };

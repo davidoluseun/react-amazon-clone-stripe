@@ -24,7 +24,6 @@ const Payment = () => {
     let isSubscribed = true;
 
     const getClientSecret = async () => {
-
       const response = await http.post(
         `/payments/create?total=${Math.round(getCartTotal(cart) * 100)}`
       );
@@ -90,7 +89,11 @@ const Payment = () => {
         prefix={"$"}
       />
       <CardElement onChange={handleChange} />
-      {error && <div className="invalid-feedback">{error}</div>}
+      {error && (
+        <div className="invalid-feedback" role="alert">
+          {error}
+        </div>
+      )}
 
       <button className="btn-primary" disabled={disabled || processing}>
         {processing ? "Processing" : "Buy Now"}
