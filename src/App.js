@@ -14,6 +14,7 @@ import Checkout from "./components/checkout/Checkout";
 import Orders from "./components/orders/Orders";
 import ToTop from "./components/common/ToTop";
 import NotFound from "./components/common/NotFound";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 import { Provider } from "./contexts/stateContext";
 import { reducer, initialState } from "./utils/reducer";
 import { auth } from "./firebase";
@@ -54,14 +55,14 @@ function App() {
           <Footer />
         </Route>
 
-        <Route path="/checkout">
+        <ProtectedRoute path="/checkout">
           <Header />
           <Elements stripe={stripePromise}>
             <Checkout />
           </Elements>
           <ToTop />
           <Footer />
-        </Route>
+        </ProtectedRoute>
 
         <Route path="/orders">
           <Header />

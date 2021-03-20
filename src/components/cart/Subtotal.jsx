@@ -7,11 +7,10 @@ import "../../styles/cart/subtotal.css";
 
 const Subtotal = () => {
   const history = useHistory();
-  const [{ cart, user }] = useStateValue();
+  const [{ cart }] = useStateValue();
 
   const handleProceedToCheckout = () => {
-    if (user) history.push("/checkout");
-    else history.push("/sign-in");
+    history.push("/checkout");
   };
 
   return (
