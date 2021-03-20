@@ -64,12 +64,12 @@ function App() {
           <Footer />
         </ProtectedRoute>
 
-        <Route path="/orders">
+        <ProtectedRoute path="/orders">
           <Header />
           <Orders />
           <ToTop />
           <Footer />
-        </Route>
+        </ProtectedRoute>
 
         <Route exact path="/">
           <Header />
