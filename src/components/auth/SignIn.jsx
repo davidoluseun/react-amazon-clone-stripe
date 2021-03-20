@@ -15,9 +15,10 @@ class SignIn extends Form {
   doSubmit = async () => {
     try {
       const { data } = this.state;
+      const { history, location } = this.props;
       const { email, password } = data;
-      const { history } = this.props;
-      const { state } = this.props.location;
+      const { state } = location;
+
       this.setState({ isLoading: true });
 
       await auth.signInWithEmailAndPassword(email, password);
