@@ -35,7 +35,7 @@ const MainNav = () => {
       <div className="content-wrap">
         <div className="nav-left">
           <button
-            className="open-btn"
+            className="btn-link"
             onClick={handleVisible}
             aria-expanded={menuIsVisible}
             aria-controls="hm-menu"

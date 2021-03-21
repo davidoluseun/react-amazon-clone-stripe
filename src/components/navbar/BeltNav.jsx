@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { auth } from "../../firebase";
 import useStateValue from "../../hooks/useStateValue";
 import "../../styles/navbar/belt-nav.css";
@@ -10,9 +10,11 @@ const BeltNav = () => {
   const [{ cart, user }] = useStateValue();
   const [selectText, setSelectText] = useState("All");
   const [isFocus, setIsFocus] = useState(false);
+  const history = useHistory();
 
   const handleSignOut = () => {
     if (user) auth.signOut();
+    else history.push("/sign-in");
   };
 
   const handleSearch = (e) => {
@@ -123,11 +125,7 @@ const BeltNav = () => {
             <img src={USAFlag} alt="" />
             <span className="caret fas fa-caret-down" aria-hidden="true"></span>
           </Link>
-          <Link
-            to={() => !user && "/sign-in"}
-            onClick={handleSignOut}
-            className="belt-sign-in"
-          >
+          <button onClick={handleSignOut} className="btn-link belt-sign-in">
             <span className="belt-line-1">
               <span className="belt-username">
                 Hello, <span>{user && user.displayName}</span>
@@ -135,7 +133,7 @@ const BeltNav = () => {
             </span>
 
             <span className="belt-line-2">{user ? "Sign Out" : "Sign In"}</span>
-          </Link>
+          </button>
           <Link to="/orders" className="belt-orders">
             <span className="belt-line-1">Returns</span>
             <span className="belt-line-2">&amp; Orders</span>
