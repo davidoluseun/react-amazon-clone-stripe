@@ -119,7 +119,7 @@ const BeltNav = () => {
         </form>
 
         <div className="nav-right">
-          <Link to="language" className="belt-language">
+          <Link to="/language" className="belt-language">
             <img src={USAFlag} alt="" />
             <span className="caret fas fa-caret-down" aria-hidden="true"></span>
           </Link>

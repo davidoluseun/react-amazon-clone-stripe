@@ -116,7 +116,7 @@ const MainNav = () => {
         </div>
 
         <div className="nav-right">
-          <Link to="">Amazon's response to COVID-19</Link>
+          <Link to="/">Amazon's response to COVID-19</Link>
         </div>
       </div>
     </div>
