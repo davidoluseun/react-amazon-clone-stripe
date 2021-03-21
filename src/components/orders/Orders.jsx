@@ -89,7 +89,7 @@ const Orders = () => {
                           </p>
                         )}
                         decimalScale={2}
-                        value={order.amount}
+                        value={order.amount / 100}
                         displayType={"text"}
                         thousandSeparator={true}
                         prefix={"$"}
