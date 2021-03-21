@@ -9,10 +9,11 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   justify-items: center;
+  text-align: center;
 }
 
 div.footer-info a {
-  padding: 5px 0;
+  padding: 5px;
 }
 
 .footer-info small {
