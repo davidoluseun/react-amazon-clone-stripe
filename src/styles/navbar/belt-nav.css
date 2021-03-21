@@ -136,6 +136,8 @@
     background: transparent;
     border: 1px solid #cdcdcd;
     border-right-color: #cdcdcd;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
   }
 
   .search-facade .caret {
