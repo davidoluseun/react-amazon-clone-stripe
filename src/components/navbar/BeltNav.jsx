@@ -12,7 +12,7 @@ const BeltNav = () => {
   const [isFocus, setIsFocus] = useState(false);
   const history = useHistory();
 
-  const handleSignOut = () => {
+  const handleSignInSignOut = () => {
     if (user) auth.signOut();
     else history.push("/sign-in");
   };
@@ -125,7 +125,7 @@ const BeltNav = () => {
             <img src={USAFlag} alt="" />
             <span className="caret fas fa-caret-down" aria-hidden="true"></span>
           </Link>
-          <button onClick={handleSignOut} className="btn-link belt-sign-in">
+          <button onClick={handleSignInSignOut} className="btn-link belt-sign-in">
             <span className="belt-line-1">
               <span className="belt-username">
                 Hello, <span>{user && user.displayName}</span>
