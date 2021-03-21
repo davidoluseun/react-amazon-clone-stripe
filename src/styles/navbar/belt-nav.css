@@ -13,7 +13,7 @@
 
 .belt-location,
 .belt-search,
-.belt-sign-in,
+.belt-auth,
 .belt-orders {
   display: none;
 }
@@ -46,7 +46,7 @@
   display: none;
 }
 
-.belt-sign-in {
+.belt-auth {
   justify-content: center;
 }
 
@@ -86,7 +86,7 @@
     height: 14px;
   }
 
-  .belt-sign-in {
+  .belt-auth {
     display: flex;
     flex-direction: column;
     padding: 0 5px;
@@ -204,14 +204,14 @@
   }
 
   .belt-language,
-  .belt-sign-in,
+  .belt-auth,
   .belt-cart {
     margin: 0;
   }
 
   .belt-location,
   .belt-language,
-  .belt-sign-in,
+  .belt-auth,
   .belt-orders,
   .belt-cart {
     padding: 0 8px 8px;
@@ -242,7 +242,7 @@
     color: #ccc;
   }
 
-  .belt-sign-in .belt-line-2 {
+  .belt-auth .belt-line-2 {
     display: inline;
   }
 

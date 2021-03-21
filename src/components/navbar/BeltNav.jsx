@@ -127,7 +127,7 @@ const BeltNav = () => {
           </Link>
           <button
             onClick={handleSignInSignOut}
-            className="btn-link belt-sign-in"
+            className="btn-link belt-auth"
           >
             <span className="belt-line-1">
               <span className="belt-username">
