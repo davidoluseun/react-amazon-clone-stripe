@@ -61,7 +61,9 @@ const Payment = () => {
 
       setProcessing(false);
       dispatch({ type: "EMPTY_CART" });
-      history.replace("/orders");
+
+      toast.success("Payment successful.");
+      setTimeout(() => history.replace("/orders"), 5000);
     } catch (e) {
       toast.error("An unexpected error occurred.");
     }
